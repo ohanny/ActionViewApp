@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:id="@+id/search_action_container"
+    android:layout_gravity="fill_horizontal">
+    <ImageView android:id="@+id/action_search_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_search"/>
+    <EditText
+        android:id="@+id/search_src_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1" android:inputType="text"
+        android:imeOptions="actionSearch"
+        android:layout_toRightOf="@id/action_search_image"
+        android:scrollHorizontally="true"
+        android:hint="Chercher"/>
+
+    <!-- 
+        Single line edit text :
+        android:lines is not needed
+        android:inputType="text" to prevent entering a new line
+
+        if we use LinearLayout, android:layout_width="match_parent" does not fill the parent
+        
+        So we use RelativeLayout instead of LinearLayout with android:layout_gravity="fill_horizontal"
+        (cf http://stackoverflow.com/questions/12883732/how-to-display-custom-view-in-actionbar)
+
+        Other solution with LinearLayout (not tested) :
+
+          - http://stackoverflow.com/questions/16516306/sherlockactionbar-how-to-adjust-customview-against-actionbar
+          - http://stackoverflow.com/questions/23392156/why-this-edittexts-width-strange-behaviour-when-used-as-actionbar-custom-view
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("XXX");
+
+        LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        View customNav = LayoutInflater.from(this).inflate(R.layout.img, null); // layout which contains your button.
+        actionBar.setCustomView(customNav, lp);
+        actionBar.setDisplayShowCustomEnabled(true);
+    -->
+
+</RelativeLayout>
